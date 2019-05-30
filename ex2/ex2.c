@@ -9,12 +9,11 @@
 
 int main(void)
 {
-    FILE *fp = fopen("text.txt", "w+");
+    FILE *fp = fopen("text.txt", "w");
+    fprintf(fp, "%d Parent 1 \n", getpid());
+    //what up with dis???!?
+    fflush(fp);
     int rc = fork();
-    if (rc != 0)
-    {
-        fprintf(fp, "Parent 1 \n");
-    }
 
     if (rc < 0)
     {
