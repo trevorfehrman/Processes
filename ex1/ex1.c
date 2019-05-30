@@ -8,7 +8,26 @@
 
 int main(void)
 {
-    // Your code here
+    int x = 7;
+    printf("Parent -- %d\n", x);
+
+    int rc = fork();
+    if (rc < 0)
+    {
+        fprintf(stderr, "Nope.\n");
+        exit(1);
+    }
+    else if (rc == 0)
+    {
+        x +=7;
+        printf("Child -- %d\n", x);
+    }
+    else
+    {
+        x -= 7;
+
+        printf("Parent after fork -- %d\n", x);
+    }
 
     return 0;
 }

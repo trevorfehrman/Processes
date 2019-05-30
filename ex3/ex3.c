@@ -10,6 +10,20 @@
 int main(void)
 {
     // Your code here
+    int rc = fork();
 
+    if (rc < 0)
+    {
+        fprintf(stderr, "Ur forked, or rather you're not forked");
+    }
+    else if (rc == 0)
+    {
+        printf("Heeyooooooooooo\n");
+    }
+    else
+    {
+        waitpid(rc, NULL, 0);
+        printf("Byeeeeeeee\n");
+    }
     return 0;
 }
